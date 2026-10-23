@@ -2,12 +2,14 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const audio = $('audio');
+  // Вставь сюда свой публичный Jamendo Client ID один раз, перед публикацией.
+  const JAMENDO_CLIENT_ID = 'b4b71acf';
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
   const state = {
     tracks: [], current: null, queue: [], view: 'home',
     favorites: new Set(read('rw-favorites', [])),
     playlists: read('rw-playlists', [{ id: 'liked', name: 'Любимые вайбы', tracks: [] }]),
-    clientId: localStorage.getItem('rw-jamendo-client-id') || ''
+    clientId: localStorage.getItem('rw-jamendo-client-id') || (JAMENDO_CLIENT_ID !== 'ВСТАВЬ_СЮДА_СВОЙ_CLIENT_ID' ? JAMENDO_CLIENT_ID : '')
   };
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
   const toast = message => { const el = $('toast'); if (!el) return; el.textContent = message; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2600); };
