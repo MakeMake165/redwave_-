@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#09090d"><title>REDWAVE — Music</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+    <div class="brand-mark">〰</div><div class="brand">RED<span>WAVE</span><small>YOUR SOUND. YOUR WORLD.</small></div>
+    <button class="icon-btn" id="profileBtn" title="Профиль">◉</button>
+  </header>
+  <aside class="sidebar" id="sidebar">
+    <div class="nav-label">МЕНЮ</div>
+    <button class="nav-item active" data-view="home">⌂ <span>Главная</span></button>
+    <button class="nav-item" data-view="search">⌕ <span>Поиск</span></button>
+    <button class="nav-item" data-view="favorites">♡ <span>Избранное</span></button>
+    <button class="nav-item" data-view="playlists">▤ <span>Мои плейлисты</span></button>
+    <button class="nav-item" data-view="queue">☷ <span>Очередь</span></button>
+    <div class="sidebar-note"><span class="pulse"></span> NEON MODE<br><small>Музыка на твоей волне</small></div>
+  </aside>
+  <main class="main-content">
+    <section class="hero" id="hero">
+      <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> ТВОЯ МУЗЫКАЛЬНАЯ ВСЕЛЕННАЯ</div>
+        <h1>Почувствуй<br><em>волну.</em></h1><p>Найди звук, который совпадает с твоим настроением.</p>
+        <button class="primary-btn" id="discoverBtn">▶ Открыть музыку</button>
+      </div><div class="hero-art"><div class="orb"><div class="wave">∿</div></div><span class="art-caption">FEEL THE FREQUENCY</span></div>
+      <div class="hero-glow"></div>
+    </section>
+    <section class="section" id="genreSection"><div class="section-heading"><div><div class="eyebrow">ПОД ТВОЁ НАСТРОЕНИЕ</div><h2>Выбери жанр</h2></div></div>
+      <div class="genre-grid">
+        <button class="genre-card phonk" data-genre="phonk"><b>PHONK</b><span>Тёмный бас</span><i>ϟ</i></button>
+        <button class="genre-card electronic" data-genre="electronic"><b>ELECTRONIC</b><span>Ночной ритм</span><i>⌁</i></button>
+        <button class="genre-card hiphop" data-genre="hip-hop"><b>HIP-HOP</b><span>Свежий флоу</span><i>✳</i></button>
+        <button class="genre-card chill" data-genre="chill"><b>CHILL</b><span>Спокойный вайб</span><i>☾</i></button>
+      </div>
+    </section>
+    <section class="section"><div class="section-heading"><div><div class="eyebrow">СЛУШАЙ И ОТКРЫВАЙ</div><h2 id="viewTitle">Новинки для тебя</h2></div><button class="text-btn" id="seeAllBtn">Обновить ↗</button></div>
+      <div class="search-row hidden" id="searchRow"><input id="searchInput" placeholder="Название, исполнитель или трек…" autocomplete="off"><button class="primary-btn" id="searchBtn">Найти</button></div>
+      <div id="status" class="status">Загружаем музыкальные превью…</div><div class="track-list" id="trackList"></div>
+    </section>
+    <section class="section" id="playlistSection"><div class="section-heading"><div><div class="eyebrow">СОХРАНИ СВОЙ ВАЙБ</div><h2>Твои плейлисты</h2></div><button class="text-btn" id="newPlaylistBtn">＋ Создать</button></div><div class="playlist-grid" id="playlistGrid"></div></section>
+    <footer>REDWAVE <span>•</span> Превью предоставляются Apple iTunes Search API. Доступность треков зависит от региона.</footer>
+  </main>
+</div>
+<div class="mini-player" id="miniPlayer">
+  <img id="playerArt" src="" alt="" class="player-art">
+  <div class="player-meta"><strong id="playerTitle">Выбери трек</strong><span id="playerArtist">Музыка ждёт тебя</span><div class="progress-wrap"><input type="range" id="seek" min="0" max="100" value="0" aria-label="Перемотка"></div></div>
+  <button class="icon-btn player-heart" id="playerFavorite" title="В избранное">♡</button><button class="play-btn" id="playPause" title="Воспроизвести">▶</button><button class="icon-btn next-btn" id="nextTrack" title="Следующий">≫</button>
+</div>
+<audio id="audio" preload="none"></audio>
+<div class="toast" id="toast"></div>
+<script src="./app.js"></script>
+</body></html>
